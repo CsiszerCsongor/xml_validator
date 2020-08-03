@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<legaldocument	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:noNamespaceSchemaLocation="document.xsd">
+	
+	<dokumentumCim>European Union Research Council (ERC) - version 1.0</dokumentumCim>
+	<dokumentumSzovegesSzama>1</dokumentumSzovegesSzama>
+	<dokumentumEvszama>2020</dokumentumEvszama>
+	<dokumentumSorszama>0</dokumentumSorszama>
+	<dokumentumTipusa>SEC</dokumentumTipusa>
+	<kibocsatoKod>E</kibocsatoKod>
+	<kibocsatasDatuma>2020-08-03</kibocsatasDatuma>
+	<dokumentumTartalom>
+		<szakasz>
+			<bekezdes>qwe</bekezdes>
+		</szakasz>
+	</dokumentumTartalom>
+</legaldocument>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<legaldocument	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:noNamespaceSchemaLocation="document.xsd">
+	
+	<dokumentumCim>European Union Research Council (ERC) - version 2.0</dokumentumCim>
+	<dokumentumSzovegesSzama>20</dokumentumSzovegesSzama>
+	<dokumentumEvszama>2021</dokumentumEvszama>
+	<dokumentumSorszama>1</dokumentumSorszama>
+	<dokumentumTipusa>COM</dokumentumTipusa>
+	<kibocsatoKod>fk</kibocsatoKod>
+	<kibocsatasDatuma>2021-08-03</kibocsatasDatuma>
+	<dokumentumTartalom>
+		<szakasz>
+			<bekezdes>The costs of renting or leasing equipment, infrastructure or other assets (including related
+duties, taxes and charges such as non-deductible value added tax (VAT) paid by the
+beneficiary) are also eligible, if they do not exceed the depreciation costs of similar
+equipment, infrastructure or assets and do not include any financing fees. </bekezdes>
+			<bekezdes>The costs of equipment, infrastructure or other assets contributed in-kind against payment
+are eligible, if they do not exceed the depreciation costs of similar equipment, infrastructure
+or assets, do not include any financing fees and if the conditions in Article 11.1 are met</bekezdes>
+			<bekezdes>The only portion of the costs that will be taken into account is that which corresponds to the
+duration of the action and rate of actual use for the purposes of the action.]</bekezdes>
+		</szakasz>
+	</dokumentumTartalom>
+</legaldocument>
