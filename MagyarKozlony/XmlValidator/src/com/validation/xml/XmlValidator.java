@@ -2,7 +2,6 @@ package com.validation.xml;
 
 import org.xml.sax.SAXException;
 
-import javax.xml.XMLConstants;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
@@ -12,8 +11,10 @@ import java.util.List;
 
 public class XmlValidator {
     private File xsdFile;
-    private Schema schema;
     private Validator validator;
+    private static final String FILE_NOT_FOUND_ON_PATH = "File not found on path: ";
+    private static final String VALIDATION_RESULT_VALID = "  => validation result: valid!";
+    private static final String VALIDATION_RESULT_INVALID = "  => validation result: invalid!  Cause: ";
 
     public XmlValidator(){}
 
@@ -28,13 +29,13 @@ public class XmlValidator {
     public String validate(String xmlFilePath){
         try {
             validator.validate(new StreamSource(new File(xmlFilePath)));
-            String result = xmlFilePath + "  => validation result: valid!";
+            String result = xmlFilePath + VALIDATION_RESULT_VALID;
             return result;
         } catch (SAXException e) {
-            String result = xmlFilePath + "  => validation result: invalid!  Cause: " + e.getMessage();
+            String result = xmlFilePath + VALIDATION_RESULT_INVALID + e.getMessage();
             return result;
         } catch (IOException ioException) {
-            String result = "File not found: " + xmlFilePath;
+            String result = FILE_NOT_FOUND_ON_PATH + xmlFilePath;
             return result;
         }
     }
@@ -56,7 +57,6 @@ public class XmlValidator {
                 } catch (IOException ioException) {
                     System.out.println("I/O Exception occured: " + ioException.getMessage());
                 }
-                System.out.println(result);
             });
             bouf.close();
             resultFileOutputStream.close();
@@ -70,7 +70,7 @@ public class XmlValidator {
     private void checkAndSetFileExists(String filePath) throws FileNotFoundException {
         File file = new File(filePath);
         if(!file.isFile()){
-            throw new FileNotFoundException("File not found on path: " + filePath);
+            throw new FileNotFoundException(FILE_NOT_FOUND_ON_PATH + filePath);
         }
 
         this.xsdFile = file;

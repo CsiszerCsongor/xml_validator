@@ -4,8 +4,6 @@ import com.validation.xml.exceptions.DirectoryNotFoundException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -13,6 +11,10 @@ import java.util.stream.Stream;
 public class FileProcessor {
     private String directoryPath;
     private String fileName;
+
+    private static final String DIRECTORY_NOT_FOUN_ON_THIS_PATH = "Directory not found on this path: ";
+    private static final String FILE_NOT_FOUN_ON_THIS_PATH = "File not found on this path: ";
+    private static final String FILE_IS_REQUIRED_INSTEAD_OF = " file is required instead of: ";
 
     public FileProcessor(){}
 
@@ -22,7 +24,7 @@ public class FileProcessor {
 
         File directory = new File(this.directoryPath);
         if(!directory.isDirectory()){
-            throw new DirectoryNotFoundException("Directory not found at this path: " + directory);
+            throw new DirectoryNotFoundException(DIRECTORY_NOT_FOUN_ON_THIS_PATH + directory);
         }
         if(!directoryPath.endsWith("/")){
             this.directoryPath = this.directoryPath + "/";
@@ -30,7 +32,7 @@ public class FileProcessor {
 
         File file = new File(this.fileName);
         if(!file.isFile()){
-            throw new FileNotFoundException("File not found at this path: " + this.fileName);
+            throw new FileNotFoundException(FILE_NOT_FOUN_ON_THIS_PATH + this.fileName);
         }
         checkFileExtension(expectedFileExtension);
     }
@@ -68,7 +70,7 @@ public class FileProcessor {
     public boolean checkFileExtension(String expectedExtension) throws FileNotFoundException {
         String extensionOfXSD = getFileExtension(this.fileName);
         if(!extensionOfXSD.equals(expectedExtension)){
-            throw new FileNotFoundException(expectedExtension + " file is required instead of: " + this.fileName);
+            throw new FileNotFoundException(expectedExtension + FILE_IS_REQUIRED_INSTEAD_OF + this.fileName);
         }
 
         return true;

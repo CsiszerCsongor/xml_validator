@@ -1,57 +1,40 @@
 package com.validation.xml;
 
-import com.validation.xml.exceptions.DirectoryNotFoundException;
-import org.xml.sax.SAXException;
-
 import javax.xml.XMLConstants;
-import javax.xml.transform.stream.StreamSource;
-import javax.xml.validation.Schema;
-import javax.xml.validation.SchemaFactory;
-import javax.xml.validation.Validator;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Main {
     private static final String DATE_TIME_FORMAT = "yyyy-MM-dd_HH-mm-ss";
     private static final String RESULT_FILENAME_EXTENSION = ".txt";
-    //private static final String RESULT_FILE_DIRECTORY = "../";
+    private static final String XSD_FILE_EXTENSION = "xsd";
+    private static final String XML_FILE_EXTENSION = "xml";
+    private static final String PROGRAM_USAGE = "Usage: <program> <directory_of_xmls> <xsd_filename>";
+    private static final String VALIDATION_TERMINATED_SUCCESSFULLY = "Validation terminated successfully!";
 
     public static void main(String[] args) {
         Main main = new Main();
 
         try {
-            String xmlFilesDirectory = "../../";
-            String xsdFilePath = args[1] = "../../document.xsd";
+            String xmlFilesDirectory = args[0];
+            String xsdFilePath = args[1];
 
-            String xsdExtension = "xsd";
-            String xmlExtension = "xml";
+            FileProcessor fileProcessor = new FileProcessor(xmlFilesDirectory, xsdFilePath, XSD_FILE_EXTENSION);
 
-            FileProcessor fileProcessor = new FileProcessor(xmlFilesDirectory, xsdFilePath, xsdExtension);
-
-            List<String> listOfXmlFiles = new ArrayList<>(fileProcessor.getFilesWithExtensionFromDirectory(xmlExtension));
+            List<String> listOfXmlFiles = new ArrayList<>(fileProcessor.getFilesWithExtensionFromDirectory(XML_FILE_EXTENSION));
 
             String resultFilename = main.createFileName();
 
-            System.out.println();
-            System.out.println("Filename : " + resultFilename);
-            System.out.println();
-
-            XmlValidator xmlValidator = new XmlValidator(XMLConstants.W3C_XML_SCHEMA_NS_URI.toString(), xsdFilePath);
+            XmlValidator xmlValidator = new XmlValidator(XMLConstants.W3C_XML_SCHEMA_NS_URI, xsdFilePath);
             xmlValidator.validateXmlList(listOfXmlFiles, resultFilename);
+
+            System.out.println(VALIDATION_TERMINATED_SUCCESSFULLY);
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());
             System.out.println();
-            System.out.println("Usage: <program> <directory_of_xmls> <xsd_filename>");
+            System.out.println(PROGRAM_USAGE);
         }
     }
 

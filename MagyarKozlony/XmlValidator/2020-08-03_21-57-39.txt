@@ -1,6 +1,0 @@
-..\..\document_invalid_03.xml  => validation result: invalid!  Cause: cvc-enumeration-valid: Value 'E' is not facet-valid with respect to enumeration '[EB, fk]'. It must be a value from the enumeration.
-..\..\document_valid_03.xml  => validation result: valid!
-..\..\document_invalid_01.xml  => validation result: invalid!  Cause: cvc-minInclusive-valid: Value '-1' is not facet-valid with respect to minInclusive '0.0' for type '#AnonType_dokumentumSzovegesSzamalegaldocument'.
-..\..\document_invalid_02.xml  => validation result: invalid!  Cause: cvc-complex-type.2.4.b: The content of element 'szakasz' is not complete. One of '{bekezdes}' is expected.
-..\..\document_valid_01.xml  => validation result: valid!
-..\..\document_valid_02.xml  => validation result: valid!
