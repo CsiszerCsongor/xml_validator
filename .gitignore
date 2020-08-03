@@ -1,2 +1,4 @@
 MagyarKozlony/XmlValidator/*.iml
 MagyarKozlony/XmlValidator/*.idea
+MagyarKozlony/XmlValidator/target/
+xml_documents/*.txt

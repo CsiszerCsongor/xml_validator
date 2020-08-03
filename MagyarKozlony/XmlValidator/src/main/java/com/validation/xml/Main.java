@@ -15,6 +15,10 @@ public class Main {
     private static final String VALIDATION_TERMINATED_SUCCESSFULLY = "Validation terminated successfully!";
 
     public static void main(String[] args) {
+        if(args.length < 2){
+            System.out.println(PROGRAM_USAGE);
+            return;
+        }
         Main main = new Main();
 
         try {
@@ -22,13 +26,12 @@ public class Main {
             String xsdFilePath = args[1];
 
             FileProcessor fileProcessor = new FileProcessor(xmlFilesDirectory, xsdFilePath, XSD_FILE_EXTENSION);
-
             List<String> listOfXmlFiles = new ArrayList<>(fileProcessor.getFilesWithExtensionFromDirectory(XML_FILE_EXTENSION));
 
             String resultFilename = main.createFileName();
 
             XmlValidator xmlValidator = new XmlValidator(XMLConstants.W3C_XML_SCHEMA_NS_URI, xsdFilePath);
-            xmlValidator.validateXmlList(listOfXmlFiles, resultFilename);
+            xmlValidator.validateXmlList(listOfXmlFiles, fileProcessor.getDirectoryPath() + resultFilename);
 
             System.out.println(VALIDATION_TERMINATED_SUCCESSFULLY);
         } catch (Exception e) {
