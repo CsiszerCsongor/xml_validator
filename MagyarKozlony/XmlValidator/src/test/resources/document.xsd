@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	
+	<xs:element name="legaldocument">
+		<!-- XSC validation rules -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="dokumentumCim">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:maxLength value="200"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="dokumentumSzovegesSzama">
+					<xs:simpleType>
+						<xs:restriction base="xs:integer">
+							<xs:minInclusive value="0"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="dokumentumEvszama">
+					<xs:simpleType>
+						<xs:restriction base="xs:integer">
+							<xs:minInclusive value="1900"/>
+							<xs:maxInclusive value="2100"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="dokumentumSorszama">
+					<xs:simpleType>
+						<xs:restriction base="xs:integer">
+							<xs:minInclusive value="0"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="dokumentumTipusa">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="COM"/>
+							<xs:enumeration value="JOIN"/>
+							<xs:enumeration value="SEC"/>
+							<xs:enumeration value="SWD"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="kibocsatoKod">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="EB"/>
+							<xs:enumeration value="fk"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="kibocsatasDatuma">
+					<xs:simpleType>
+						<xs:restriction base="xs:date">
+							<xs:minInclusive value="1900-01-01"/>
+							<xs:maxInclusive value="2100-01-01"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="dokumentumTartalom">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="szakasz" type="szakaszType" minOccurs="1" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name="szakaszType">
+		<xs:sequence>
+			<xs:element name="bekezdes" type="xs:string" minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	
+</xs:schema>

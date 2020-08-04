@@ -62,7 +62,8 @@ public class XmlValidator {
             resultFileOutputStream.close();
 
         } catch (IOException ioException) {
-            ioException.printStackTrace();
+            System.out.println("Error at writing into file: " + resultFilePath);
+            System.out.println("Error message: " + ioException.getMessage());
         }
 
     }

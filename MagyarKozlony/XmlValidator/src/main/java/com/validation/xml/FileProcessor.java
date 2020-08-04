@@ -15,7 +15,7 @@ public class FileProcessor {
     private String fileName;
 
     private static final String DIRECTORY_NOT_FOUN_ON_THIS_PATH = "Directory not found on this path: ";
-    private static final String FILE_NOT_FOUN_ON_THIS_PATH = "File not found on this path: ";
+    private static final String FILE_NOT_FOUND_ON_THIS_PATH = "File not found on this path: ";
     private static final String FILE_IS_REQUIRED_INSTEAD_OF = " file is required instead of: ";
 
     public FileProcessor(){}
@@ -29,12 +29,12 @@ public class FileProcessor {
             throw new DirectoryNotFoundException(DIRECTORY_NOT_FOUN_ON_THIS_PATH + directory);
         }
         if(!directoryPath.endsWith("/")){
-            this.directoryPath = this.directoryPath + "/";
+            this.directoryPath = this.directoryPath + File.separator;
         }
 
         File file = new File(this.fileName);
         if(!file.isFile()){
-            throw new FileNotFoundException(FILE_NOT_FOUN_ON_THIS_PATH + this.fileName);
+            throw new FileNotFoundException(FILE_NOT_FOUND_ON_THIS_PATH + this.fileName);
         }
 
         checkFileExtension(expectedFileExtension);
