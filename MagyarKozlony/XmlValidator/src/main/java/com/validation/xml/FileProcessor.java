@@ -1,9 +1,11 @@
 package com.validation.xml;
 
 import com.validation.xml.exceptions.DirectoryNotFoundException;
+import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -34,6 +36,7 @@ public class FileProcessor {
         if(!file.isFile()){
             throw new FileNotFoundException(FILE_NOT_FOUN_ON_THIS_PATH + this.fileName);
         }
+
         checkFileExtension(expectedFileExtension);
     }
 
@@ -62,23 +65,17 @@ public class FileProcessor {
 
     public Set<String> getFilesWithExtensionFromDirectory(String extension){
         return Stream.of(new File(this.directoryPath).listFiles())
-                .filter(file -> !file.isDirectory() && getFileExtension(file.getName()).equals(extension))
+                .filter(file -> !file.isDirectory() && FilenameUtils.getExtension(file.getName()).equals(extension))
                 .map(File::getPath)
-                .collect(Collectors.toSet());
+                .collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
     public boolean checkFileExtension(String expectedExtension) throws FileNotFoundException {
-        String extensionOfXSD = getFileExtension(this.fileName);
+        String extensionOfXSD = FilenameUtils.getExtension(this.fileName);
         if(!extensionOfXSD.equals(expectedExtension)){
             throw new FileNotFoundException(expectedExtension + FILE_IS_REQUIRED_INSTEAD_OF + this.fileName);
         }
 
         return true;
-    }
-    private String getFileExtension(String filename) {
-        if(filename != null && filename.contains(".")){
-            return filename.substring(filename.lastIndexOf(".") + 1);
-        }
-        return "";
     }
 }

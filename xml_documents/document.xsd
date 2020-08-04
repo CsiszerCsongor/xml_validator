@@ -15,14 +15,14 @@
 				</xs:element>
 				<xs:element name="dokumentumSzovegesSzama">
 					<xs:simpleType>
-						<xs:restriction base="xs:decimal">
+						<xs:restriction base="xs:integer">
 							<xs:minInclusive value="0"/>
 						</xs:restriction>
 					</xs:simpleType>
 				</xs:element>
 				<xs:element name="dokumentumEvszama">
 					<xs:simpleType>
-						<xs:restriction base="xs:decimal">
+						<xs:restriction base="xs:integer">
 							<xs:minInclusive value="1900"/>
 							<xs:maxInclusive value="2100"/>
 						</xs:restriction>
@@ -30,7 +30,7 @@
 				</xs:element>
 				<xs:element name="dokumentumSorszama">
 					<xs:simpleType>
-						<xs:restriction base="xs:decimal">
+						<xs:restriction base="xs:integer">
 							<xs:minInclusive value="0"/>
 						</xs:restriction>
 					</xs:simpleType>
