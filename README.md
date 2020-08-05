@@ -1,4 +1,4 @@
-# XML validator
+# XML validátor
 
 ## Feladat:
 Készíteni kellett egy XSD fájlt és ennek megfelelően 3 darab valid és 3 db nem valid XML fájlt. Egy Java kódot is kellett mellé írni, amelynek paraméterként meg lehet adni az XML fájlokat tartalmazó directory-t és XSD fájl nevét. A program kiolvassa az összes XML fájlt a directory-ból és szerre levalidálja azokat. Az eredményt kiírja egy txt fájlba, aminek a nevét az év, hónap, nap, óra, perc, másodperc alapján képezi, következő formában:
