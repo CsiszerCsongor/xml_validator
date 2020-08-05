@@ -11,7 +11,7 @@ public class Main {
     private static final String RESULT_FILENAME_EXTENSION = ".txt";
     private static final String XSD_FILE_EXTENSION = "xsd";
     private static final String XML_FILE_EXTENSION = "xml";
-    private static final String PROGRAM_USAGE = "Usage: <program> <directory_of_xmls> <xsd_filename>";
+    private static final String PROGRAM_USAGE = "Usage: java -jar <program_name> <directory_of_xmls> <xsd_filename>\nDefault program name: XMLValidator.jar";
     private static final String VALIDATION_TERMINATED_SUCCESSFULLY = "Validation terminated successfully!";
 
     public static void main(String[] args) {
