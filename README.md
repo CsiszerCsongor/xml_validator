@@ -35,10 +35,12 @@ A megkapott XML fájl listán végigmenve, mindegyik XML fájlt validálja, és 
 
 # Maven rész
 A következő parancs kiadásával létrehoz egy jar állományt a következő névvel: *XMLValidator.jar*
-> ``` mvn clean package ```
+``` 
+   mvn clean package 
+```
 
 Megvárjuk a lefutását a parancsnak. Létrehoz egy __/target__ nevű mappát. Ebbe a mappába teszi bele a létrehozott jar-t.
-Ezt a jar-t ezután mozgathatjuk. A parancs, amti ki kell adni, hogy máshol is lefusson(ha fel van telepítve a JDK):
+Ezt a jar-t ezután mozgathatjuk. A parancs, amit ki kell adni, hogy máshol is lefusson(ha fel van telepítve a JDK):
 ```
    java -jar XMLValidator.jar <XML_mappa_név> <XSD_fájl>
 ```
