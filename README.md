@@ -7,7 +7,7 @@ Készíteni kellett egy XSD fájlt és ennek megfelelően 3 darab valid és 3 db
 Az XSD és XML fájlok az __xml_documents/__ nevű mappában találhatók. Az elnevezésükben olvasható, hogy mely fájlok azok, amikre azt kell kiadja a program, hogy helyes és mely fájlok azok, amikre ki kell írja a hibákat.
 
 ## XSD séma definíció
-A séma következő megszorításokat helyezi egy XML fájl elé, ahhoz, hogy validnak lehessen:
+A séma a következő megszorításokat helyezi egy XML fájl elé, ahhoz, hogy validnak lehessen mondani:
 - *dokumentumCim*           - string, hossza 1-től 200 karakterig terjedő lehet
 - *dokumentumSzovegesSzama* - egész szám, ami nem lehet kisebb, mint 0
 - *dokumentumEvszama*       - egész szám, ami 1900-2100-ig vehet fel értékeket
@@ -23,9 +23,12 @@ A séma következő megszorításokat helyezi egy XML fájl elé, ahhoz, hogy va
 Maven build tool-t használtam, hogy a jar fájl létrehozása könnyebb legyen. A __pom.xml__-ben meg van adva, hogy 1.8-as java-t használjon, jar-t hozzon létre, és hogy a végső neve a jar-nak *XMLValidator* legyen. 
 
 A main osztály a belépési pont(mit ad Isten :) ). Először is ellenőrzi, hogy vannak-e paraméterek. Ha nincsenek, akkor leáll és kiírja, hogy hogyan kell elindítani a programot:
-> Usage: <program> <directory_of_xmls> <xsd_filename>
+```
+   Usage: java -jar <program_name> <directory_of_xmls> <xsd_filename>
+   Default program name: XMLValidator.jar 
+```
 
-Ha helyesen van elindítva, akkor létrehoz egy FileProcessor objektumot. A FileProcessor konstruktora ellenőrzi, hogy tényleg egy mappa és egy fájl van-e megadva, aminek a kiterjesztése a paraméterként átadott extension(jelen esetben .xsd). Ha valami nem stimmel, akkor kivételt dob és leáll a program a megfelelő hibaüzenet kiírásával. 
+Ha helyesen van elindítva, akkor létrehoz egy *FileProcessor* objektumot. A *FileProcessor* konstruktora ellenőrzi, hogy tényleg egy mappa és egy fájl van-e megadva, aminek a kiterjesztése a paraméterként átadott extension(jelen esetben .xsd). Ha valami nem stimmel, akkor kivételt dob és leáll a program a megfelelő hibaüzenet kiírásával. 
 Ha sikeresen létrejött a __fileProcessor__ objektum, akkor lekéri az adott mappában levő xml file-ok listáját. 
 Mindezek után létrejön egy __XmlValidator__ objektum, ha az átadott xsd fájl létezik a megadott útvonallal és névvel. Ha nem fájl lett megadva, hanem directory, akkor itt is kivételt dobódik, azzal az üzenettel, hogy nem létezik az adott fájl. 
 A megkapott XML fájl listán végigmenve, mindegyik XML fájlt validálja, és beírja a paraméterként kapott fájlba a validálás eredményét. Ha egy XML fájl nem valid, akkor a hiba okát is beleírja. Mindezek után kiírja a sikeres lefutás üzenetét.
@@ -35,7 +38,9 @@ A következő parancs kiadásával létrehoz egy jar állományt a következő n
 > ``` mvn clean package ```
 
 Megvárjuk a lefutását a parancsnak. Létrehoz egy __/target__ nevű mappát. Ebbe a mappába teszi bele a létrehozott jar-t.
-Ezt a jar-t ezután mozgathatjuk. A parancs, ami ki kell adni, hogy máshol is lefusson(ha fel van telepítve a JDK):
-> ```java -jar XMLValidator.jar <XML_mappa_név> <XSD_fájl>```
+Ezt a jar-t ezután mozgathatjuk. A parancs, amti ki kell adni, hogy máshol is lefusson(ha fel van telepítve a JDK):
+```
+   java -jar XMLValidator.jar <XML_mappa_név> <XSD_fájl>
+```
 
 A létrehozott fájlt abban a mappában kell keresni, ahol az XML fájlok is vannak.
